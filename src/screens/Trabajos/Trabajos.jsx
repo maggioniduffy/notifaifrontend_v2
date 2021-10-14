@@ -1,11 +1,14 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from 'react'
+import { SafeAreaView } from 'react-native';
 
-const Trabajos = () => {
+import { Header } from '../../components';
+
+const Trabajos = ({route}) => {
+    const { name } = route;
     return (
-        <Text>
-          Trabajos  
-        </Text>
+        <SafeAreaView>
+            <Header title={name} />
+        </SafeAreaView>
     )
 }
 

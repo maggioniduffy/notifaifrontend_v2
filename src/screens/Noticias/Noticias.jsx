@@ -1,11 +1,33 @@
 import React from 'react'
-import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import Hyperlink from 'react-native-hyperlink';
 
-const Noticias = () => {
+import { Card, Header, List, Typography } from '../../components';
+
+const renderItem = (item) => {
+    const { link, title } = item.item; 
+    return(
+        <Card>
+            <Typography align='center' size={25}> {title} </Typography>
+            <Hyperlink linkDefault={ true }>
+                <Typography align='center' size={18}> {link} </Typography>
+            </Hyperlink>
+        </Card>
+    )
+}
+
+const Noticias = ({route}) => {
+    const { name } = route;
+    const data = [{
+        id: '999',
+        title: 'Faus',
+        link: 'hola'
+    }]
     return (
-        <Text>
-            Noticias
-        </Text>
+        <SafeAreaView>
+            <Header title={name} />
+            <List data={data} renderItem={renderItem}/>
+        </SafeAreaView>
     )
 }
 

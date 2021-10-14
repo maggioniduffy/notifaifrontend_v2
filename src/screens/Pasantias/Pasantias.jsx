@@ -1,10 +1,14 @@
-import React from 'react'
-import { Text } from 'react-native'
-const Pasantias = () => {
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+
+import { Header } from '../../components';
+
+const Pasantias = ({ route }) => {
+    const { name } = route;
     return (
-        <Text>
-            Pasantias
-        </Text>
+        <SafeAreaView>
+            <Header title={name} />
+        </SafeAreaView>
     )
 }
 

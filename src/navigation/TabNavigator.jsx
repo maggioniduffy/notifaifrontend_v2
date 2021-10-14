@@ -7,7 +7,6 @@ import { colors } from '../utils/theme';
 const Tab = createBottomTabNavigator();
 
 const getIcon = (routeName, size, color) => {
-  console.log(routeName)
   switch (routeName) {
     case 'Noticias':
       return <FontAwesome name="newspaper-o" size={size} color={color} />
