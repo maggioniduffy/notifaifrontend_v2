@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import { ActivityIndicator } from 'react-native';
 
 import TabNavigator from './src/navigation/TabNavigator';
+import { SocketProvider } from './src/context/context';
 
 const App = () => {
 
@@ -23,12 +24,12 @@ const App = () => {
   }
 
   return (
-    <>
+    <SocketProvider>
       <NavigationContainer>
         <TabNavigator />
       </NavigationContainer>
       <StatusBar style='auto'/>
-    </>
+    </SocketProvider>
   )
 }
 

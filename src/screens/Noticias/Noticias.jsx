@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native';
 import Hyperlink from 'react-native-hyperlink';
 
 import { Card, Header, List, Typography } from '../../components';
+import { SocketContext } from '../../context/context';
 
 const renderItem = (item) => {
     const { link, title } = item.item; 
@@ -16,13 +17,20 @@ const renderItem = (item) => {
     )
 }
 
-const Noticias = ({route}) => {
+const Noticias = ({ route }) => {
     const { name } = route;
-    const data = [{
-        id: '999',
-        title: 'Faus',
-        link: 'hola'
-    }]
+    const socket = useContext(SocketContext)
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const setNoticias = (info) => {
+            console.log('info', info);
+        }
+        socket.on('noticias', setNoticias)
+        socket.emit('login_noticias');
+        return () => socket.off();
+    }, [socket])
+
     return (
         <SafeAreaView>
             <Header title={name} />
